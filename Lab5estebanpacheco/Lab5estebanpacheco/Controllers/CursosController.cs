@@ -25,7 +25,8 @@ public class CursosController : ControllerBase
             id_curso = c.id_curso,
             nombre = c.nombre,
             descripcion = c.descripcion,
-            creditos = c.creditos
+            creditos = c.creditos,
+            id_profesor = c.id_profesor
         });
 
         return Ok(cursosDto);
@@ -42,7 +43,8 @@ public class CursosController : ControllerBase
             id_curso = curso.id_curso,
             nombre = curso.nombre,
             descripcion = curso.descripcion,
-            creditos = curso.creditos
+            creditos = curso.creditos,
+            id_profesor = curso.id_profesor
         };
 
         return Ok(cursoDto);
@@ -55,7 +57,8 @@ public class CursosController : ControllerBase
         {
             nombre = cursoDto.nombre,
             descripcion = cursoDto.descripcion,
-            creditos = cursoDto.creditos
+            creditos = cursoDto.creditos,
+            id_profesor = cursoDto.id_profesor
         };
 
         await _unitOfWork.Repository<cursos>().AddAsync(curso);
@@ -73,6 +76,7 @@ public class CursosController : ControllerBase
         curso.nombre = cursoDto.nombre;
         curso.descripcion = cursoDto.descripcion;
         curso.creditos = cursoDto.creditos;
+        curso.id_profesor = cursoDto.id_profesor;
 
         _unitOfWork.Repository<cursos>().Update(curso);
         await _unitOfWork.SaveAsync();

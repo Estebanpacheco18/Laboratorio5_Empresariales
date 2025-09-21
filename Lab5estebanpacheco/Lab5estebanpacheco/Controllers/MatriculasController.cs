@@ -125,33 +125,51 @@ public class MatriculasController : ControllerBase
         
         return Ok("Profesor asignado al curso");
     }
-
+    
     [HttpGet("ListarParticipantes/{idCurso}")]
     public async Task<IActionResult> ListarParticipantes(ulong idCurso)
     {
+        // Verifica si el curso existe
         var curso = await _unitOfWork.Repository<cursos>().GetByIdAsync(idCurso);
-        if (curso == null) return NotFound("Curso no encontrado");
+        if (curso == null)
+        {
+            return NotFound("El curso no existe.");
+        }
 
-        var matriculas = await _unitOfWork.Repository<matriculas>().GetAllAsync();
-        var estudiantes = matriculas
-            .Where(m => m.id_curso == (int?)idCurso)
-            .Select(m => m.id_estudiante)
+        // Obtiene las matrículas asociadas al curso
+        var participantes = await _unitOfWork.Repository<matriculas>()
+            .FindAsync(m => m.id_curso == (int?)idCurso);
+
+        if (participantes == null || !participantes.Any())
+        {
+            return NotFound("No hay participantes para este curso.");
+        }
+
+        // Filtra y obtiene los estudiantes asociados
+        var estudiantes = participantes
+            .Where(m => m.id_estudiante.HasValue) // Verifica si id_estudiante tiene valor
+            .Select(m => m.id_estudiante.Value)  // Accede al valor de manera segura
             .Distinct();
 
+        // Obtiene la información de los estudiantes
         var estudiantesInfo = await Task.WhenAll(estudiantes.Select(async id =>
         {
             var estudiante = await _unitOfWork.Repository<estudiante>().GetByIdAsync((ulong)id);
-            return estudiante?.nombre;
+            return estudiante?.nombre ?? "Estudiante desconocido";
         }));
 
-        // Ajusta la lógica para obtener el profesor relacionado con el curso
-        var profesor = await _unitOfWork.Repository<profesores>().GetByIdAsync(curso.id_profesor.Value);
+        // Obtiene la información del profesor asociado al curso
+        var profesor = curso.id_profesor.HasValue
+            ? await _unitOfWork.Repository<profesores>().GetByIdAsync(curso.id_profesor.Value)
+            : null;
 
+        // Devuelve la información del curso, profesor y estudiantes
         return Ok(new
         {
             Curso = curso.nombre,
-            Profesor = profesor?.nombre,
+            Profesor = profesor?.nombre ?? "Profesor no asignado",
             Estudiantes = estudiantesInfo
         });
     }
+
 }
