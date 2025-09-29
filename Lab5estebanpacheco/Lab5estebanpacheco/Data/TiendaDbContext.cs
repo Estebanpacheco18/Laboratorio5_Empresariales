@@ -21,6 +21,8 @@ public partial class TiendaDbContext : DbContext
     public virtual DbSet<materias> materias { get; set; }
     public virtual DbSet<matriculas> matriculas { get; set; }
     public virtual DbSet<profesores> profesores { get; set; }
+    public virtual DbSet<user> users { get; set; }
+    
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

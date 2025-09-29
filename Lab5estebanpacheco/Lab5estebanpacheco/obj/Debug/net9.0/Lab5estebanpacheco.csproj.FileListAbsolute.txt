@@ -131,3 +131,11 @@ D:\CSharp\Laboratorio5_Empresariales\Lab5estebanpacheco\Lab5estebanpacheco\obj\D
 D:\CSharp\Laboratorio5_Empresariales\Lab5estebanpacheco\Lab5estebanpacheco\obj\Debug\net9.0\Lab5estebanpacheco.pdb
 D:\CSharp\Laboratorio5_Empresariales\Lab5estebanpacheco\Lab5estebanpacheco\obj\Debug\net9.0\Lab5estebanpacheco.genruntimeconfig.cache
 D:\CSharp\Laboratorio5_Empresariales\Lab5estebanpacheco\Lab5estebanpacheco\obj\Debug\net9.0\ref\Lab5estebanpacheco.dll
+D:\CSharp\Laboratorio5_Empresariales\Lab5estebanpacheco\Lab5estebanpacheco\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\CSharp\Laboratorio5_Empresariales\Lab5estebanpacheco\Lab5estebanpacheco\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+D:\CSharp\Laboratorio5_Empresariales\Lab5estebanpacheco\Lab5estebanpacheco\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\CSharp\Laboratorio5_Empresariales\Lab5estebanpacheco\Lab5estebanpacheco\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+D:\CSharp\Laboratorio5_Empresariales\Lab5estebanpacheco\Lab5estebanpacheco\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+D:\CSharp\Laboratorio5_Empresariales\Lab5estebanpacheco\Lab5estebanpacheco\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\CSharp\Laboratorio5_Empresariales\Lab5estebanpacheco\Lab5estebanpacheco\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+D:\CSharp\Laboratorio5_Empresariales\Lab5estebanpacheco\Lab5estebanpacheco\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
